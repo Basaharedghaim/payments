@@ -5,13 +5,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 @Slf4j
-@Component
-public class MailSender {
-@Autowired
-  private JavaMailSender javaMailSender;
+@Service
+public class Mail {
+  @Autowired
+  private  JavaMailSender javaMailSender;
+
 
     public void sendEmail(String toEmail,
                           String subject,

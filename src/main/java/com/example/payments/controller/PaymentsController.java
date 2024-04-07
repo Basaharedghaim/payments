@@ -1,6 +1,6 @@
 package com.example.payments.controller;
 
-import com.example.payments.mail.MailSender;
+import com.example.payments.exceptions.InsufficientBalanceException;
 import com.example.payments.services.PaymentService;
 import com.models.demo.models.entity.Request;
 import com.models.demo.models.entity.Response;
@@ -22,9 +22,13 @@ public class PaymentsController {
 this.paymentService=paymentService;
     }
     @PostMapping("/buyBook")
-    public Response processPayments(@RequestBody Request request){
+    public Response processPayments(@RequestBody Request request) {
 
             return paymentService.processPayment(request);
+    }
+    @GetMapping("/try")
+    public String test1(){
+        return "from Payments";
     }
 
 }
