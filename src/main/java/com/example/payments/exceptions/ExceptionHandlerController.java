@@ -23,7 +23,7 @@ public ResponseEntity<CustomerErrorResponse> handleException(CustomerNotFoundExc
         customerErrorResponse.setMessage(exception.getMessage());
         customerErrorResponse.setTimestamp(System.currentTimeMillis());
         customerErrorResponse.setErrorType("Insufficient Balance");
-        return new ResponseEntity<>(customerErrorResponse,HttpStatus.NOT_FOUND);
+        return new ResponseEntity<>(customerErrorResponse,HttpStatus.SERVICE_UNAVAILABLE);
     }
 
 }

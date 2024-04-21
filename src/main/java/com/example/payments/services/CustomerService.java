@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 public class CustomerService {
     @Autowired
     private EntityManager entityManager;
+
     public boolean isCustomerIdExist(Long id) {
         Query query = entityManager.createQuery("SELECT COUNT(c) FROM Customer c WHERE c.id = :id");
         query.setParameter("id", id);

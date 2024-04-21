@@ -6,10 +6,7 @@ import com.example.payments.repositories.CustomerRepository;
 import com.models.demo.models.entity.*;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-
 import java.util.Optional;
 
 @Service
@@ -31,8 +28,8 @@ public class PaymentService {
                 if (customer.getBalance() > request.getAmount()) {
                     System.out.println(customer.getBalance());
                     log.info("Payment Approved");
-                    mailSender.sendEmail(customer.getEmail(), "Payment Approved", String.valueOf(request.getAmount()));
 
+                 mailSender.sendEmail(customer.getEmail(), "Payment Approved", String.valueOf(request.getAmount()));
 
                     customer.setBalance(customer.getBalance() - request.getAmount());
                     customerRepository.save(customer);
@@ -41,14 +38,11 @@ public class PaymentService {
                 {
                     log.info("Couldn't Proceed Payments due to insufficient balance.");
                     mailSender.sendEmail(customer.getEmail(), "Payment Failed", "Insufficient Balance");
-                   throw new InsufficentBalanceException("\"Couldn't Proceed Payments due to insufficient balance to Customer."
+                   throw new InsufficentBalanceException("Couldn't Proceed Payments due to insufficient balance to Customer."
                            +customer.getFirstName()+" "+customer.getLastName()+
                            " Current Balance:" +customer.getBalance());
                 }
-
-
     }
-
 }
 
 

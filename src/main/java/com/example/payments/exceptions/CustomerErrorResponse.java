@@ -13,4 +13,5 @@ public class CustomerErrorResponse {
     private long timestamp;
     private String errorType;
 
+
 }
